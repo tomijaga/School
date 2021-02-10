@@ -1,0 +1,9 @@
+Tomi Jaga
+
+Sources:
+-printTrangles.c
+
+compilation Intrstrctions:
+gcc printTriangles.c -o pT
+./pT
+

@@ -1,0 +1,22 @@
+{
+  "name": "store-mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ProductModel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node store-server",
+    "dev": "nodemon store-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongodb-session": "^2.4.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "faker": "^4.1.0",
+    "mongoose": "^5.11.4",
+    "pug": "^2.0.4",
+    "requirejs": "^2.3.6"
+  }
+}

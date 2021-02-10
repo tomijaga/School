@@ -1,0 +1,12 @@
+.hover_id {
+  background-color: rgb(58, 58, 58);
+  color: "black";
+  display: none;
+  position: absolute;
+  top: 120%;
+}
+
+.card:hover .hover_id {
+  display: block;
+  transition: display;
+}

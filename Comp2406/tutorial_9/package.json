@@ -1,0 +1,17 @@
+{
+  "name": "tutorial_9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BookModel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node database-initializer"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "mongoose": "^5.11.4"
+  }
+}
