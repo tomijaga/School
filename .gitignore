@@ -6,3 +6,6 @@
 
 #all __MACOSX folders
 **/__MACOSX
+
+#ds_store
+**/.DS_Store

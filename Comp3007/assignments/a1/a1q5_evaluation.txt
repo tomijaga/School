@@ -1,0 +1,86 @@
+Tomi Jaga, 101121458
+
+---------------Q1-------------------------
+The applicative-order evaluates expressions before they 
+are passed into the procedure as an arguement.
+The interpreter evaluate the subexpressions then apply the resulting
+procedure to resulting arguements
+
+(test x y)
+(test 0 (/ 4 0))
+(test 0 inf.0)
+(test 0 inf.0)
+
+(if (= x 0) x y)
+(if (= 0 0) 0 inf.0)
+(if #t 0 inf.0)
+
+=> 0
+
+---------------Q2-------------------------
+The Normal-order evaluated=s expressions onlywhen their value is needed
+The interpreter evaluates the operator and applies it to operands, 
+this is repeated until the primitive operator are reached.
+Finaly it evalurates the operands and applies them to the primitive operators
+
+(test x y)
+(test 0 (/ 4 0))
+(if (= x 0) x y)
+(if (= 0 0) 0 (/ 4 0))
+(if #t 0 (/ 4 0))
+
+=> 0
+
+
+---------------Q3-------------------------
+
+*if b is greater than 0,  let a = 1 & b = 2  *
+(foo 1 2)
+((cond ((> 2 0) +)((= 2 0) *)(else /)) 1 2)
+((cond (#t +)((= 2 0) *)(else /)) 1 2)
+((cond (#t +)) 1 2)
+(+ 1 2)
+=> 3
+
+conclusion: for all numbers if b is egreater than 0
+a is added to b
+
+
+*if b is equal to 0,  let a = 1 & b = 0  *
+(foo 1 0)
+((cond ((> 0 0) +)((= 0 0) *)(else /)) 1 0)
+((cond (#f +)((= 0 0) *)(else /)) 1 0)
+((cond ((= 0 0) *)(else /)) 1 0)
+((cond (#t *)(else /)) 1 0)
+((cond (#t *)) 1 0)
+(* 1 0)
+=> 0
+
+conclusion: for all numbers if b is equal to 0
+a is multiplied by b
+
+*if b is less than  0,  let a = 1 & b = -1  *
+(foo 1 -1)
+((cond ((> -1 0) +)((= -1 0) *)(else /)) 1 -1)
+((cond (#f +)((= -1 0) *)(else /)) 1 -1)
+((cond (#f *)(else /)) 1 -1)
+((cond (else /)) 1 -1)
+(/ 1 -1)
+=> -1
+
+conclusion: for all numbers if b is less than 0
+a is divided by b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
