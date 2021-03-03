@@ -1,0 +1,13 @@
+1a. It is stored as a String
+ b. 
+
+2a. If self.angleS is a valid Double then return its double value, If not return an angle 
+    of 0;
+2b. In the rotation Effect in Body
+
+2c. let a = Double(self.angleS)
+	return a ?? Angle(degrees: 0); 
+
+3.  self.finalAmount += self.currentAmount
+
+6. TextField()
