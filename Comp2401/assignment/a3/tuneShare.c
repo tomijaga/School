@@ -198,15 +198,15 @@ void logon(TuneShare *t, char *name)
 	if (user != NULL)
 	{
 		user->online = 1;
-		short int numOnline = numOfOnlineUsers(t);
-		short int numAvail = numOfAvailableSongs(t);
+		// short int numOnline = numOfOnlineUsers(t);
+		// short int numAvail = numOfAvailableSongs(t);
 
-		printf("logging in %s\n", user->name);
-		printf("num of Online Users %d\n", numOnline);
-		User **users = onlineUsers(t, &numOnline);
+		// printf("logging in %s\n", user->name);
+		// printf("num of Online Users %d\n", numOnline);
+		// User **users = onlineUsers(t, &numOnline);
 
-		// printUser(users[0]);
-		printf("num of availableSongs Users %d\n", numAvail);
+		// // printUser(users[0]);
+		// printf("num of availableSongs Users %d\n", numAvail);
 	}
 }
 
@@ -218,14 +218,14 @@ void logoff(TuneShare *t, char *name)
 	{
 		user->online = 0;
 
-		short int numOnline = numOfOnlineUsers(t);
-		short int numAvail = numOfAvailableSongs(t);
-		printf("logging off %s\n", user->name);
-		printf("num of Online Users %d\n", numOnline);
-		User **online_users = onlineUsers(t, &numOnline);
+		// short int numOnline = numOfOnlineUsers(t);
+		// short int numAvail = numOfAvailableSongs(t);
+		// printf("logging off %s\n", user->name);
+		// printf("num of Online Users %d\n", numOnline);
+		// User **online_users = onlineUsers(t, &numOnline);
 
-		printUser(online_users[0]);
-		printf("num of availableSongs Users %d\n", numAvail);
+		// printUser(online_users[0]);
+		// printf("num of availableSongs Users %d\n", numAvail);
 	}
 }
 
