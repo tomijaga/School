@@ -1,0 +1,134 @@
+COMP 1601 2021W Tutorial 5
+Name: Tomi Jaga
+Student ID: 101121458
+
+Collaborators:
+
+1.  result.setText(String.format("%s Farenheit is %.4f Celsius", Fs, C))
+
+
+2.
+
+xml:
+        <TextView
+
+            android:id="@+id/kelvin_results"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:text="@string/message"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+Kotlin:
+	private lateinit var kelvinResults: TextView
+
+	//onCreate
+	kelvinResults = findViewById(R.id.kelvin_results)
+
+	//afterTextChanged
+	 if (F == null) {
+
+                result.setText("Please enter a number to convert.")
+		kelvinResults.setText("Please enter a number to convert.")
+
+            } else {
+
+                val C = (F - 32.0) * (5.0 / 9.0)
+
+                result.setText(String.format("%s Farenheit is %.2f Celsius", Fs, C))
+
+		val K = ((F - 32.0) * (5.0 / 9.0)) + 273.15
+		kelvinResult.setText(String.format("%s Farenheit is %.2f Kelvin", Fs, K))
+
+            }
+
+3. String sourceString =String.format("<b>%s</b> Farenheit is <b>%.2f</b> Celsius", Fs, C); 
+result.setText.setText(Html.fromHtml(sourceString));
+
+
+4.
+
+ <EditText
+
+            android:id="@+id/editMiles"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+
+            android:gravity="center"
+
+            android:hint="Enter Miles"
+
+            android:inputType="numberSigned" />
+
+
+        <TextView
+
+            android:id="@+id/resultInKm"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:text="@string/message"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+<resources>
+
+    <string name="app_name">Temperature Converter</string>
+
+    <string name="message">Enter a number please</string>
+
+</resources>
+
+onCreate:
+	resultInKm = findViewById(R.id.result)
+
+        editMiles = findViewById(R.id.editMiles)
+
+        editMiles.addTextChangedListener(watcher)
+
+afterTextChanged:	
+	  val Miles = editTemperature.getText().toString()
+
+            var M = Miles.toDoubleOrNull()
+
+
+            if (M == null) {
+
+                resultInKm.setText("Please enter a number to convert.")
+
+            } else {
+
+                val Km = M  * 1.60934
+
+                resultInKm.setText(String.format("%s Miles is %.2f Kilometres", Miles, Km))
+
+            }
+
+5. 
+Explicit Types:
+TextWatcher
+TextView
+EditText
+Editable
+object
+
+
+Implicit Types:
+String
+Double
+Int
+
+6.
+lateinit seems mysterious 
+
+
