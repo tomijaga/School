@@ -1,0 +1,92 @@
+COMP 1601 2021W Tutorial 6
+Name: Tomi Jaga
+Student ID: 101121458
+
+Collaborators:
+
+1.It doesnt have the view embedded in it
+
+
+2.The flow of control goes from beginning of the class to the end
+
+
+3.Yes they are all used in a meaningful way. They allow us to import component and functions that we can use in this program
+
+
+4.
+ <EditText
+
+            android:id="@+id/editMiles"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+
+            android:gravity="center"
+
+            android:hint="Enter Miles"
+
+            android:inputType="numberSigned" />
+    <TextView
+
+            android:id="@+id/resultInKm"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:text="@string/message"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+<resources>
+
+    <string name="app_name">Temperature Converter</string>
+
+    <string name="message">Enter a number please</string>
+
+</resources>
+
+onCreate:
+        resultInKm = findViewById(R.id.result)
+
+        editMiles = findViewById(R.id.editMiles)
+
+        editMiles.addTextChangedListener(watcher)
+
+afterTextChanged:
+          val Miles = editTemperature.getText().toString()
+
+            var M = Miles.toDoubleOrNull()
+
+
+            if (M == null) {
+
+                resultInKm.setText("Please enter a number to convert.")
+
+            } else {
+
+                val Km = M  * 1.60934
+
+                resultInKm.setText(String.format("%s Miles is %.2f Kilometres", Miles, Km))
+
+            }
+
+
+5.
+You can add a resources tag with string that sow a default message like the ones below:
+
+<resources>
+
+    <string name="app_name">Temperature Converter</string>
+
+    <string name="message">Enter a number please</string>
+
+</resources>
+
+
+
+6.
+	It was easy compared to Swift.

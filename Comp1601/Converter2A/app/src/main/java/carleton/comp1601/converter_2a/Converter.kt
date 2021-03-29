@@ -30,21 +30,13 @@ fun InToCM(inch: Double): Double? {
 
 val conversions = mapOf(
         "F to C" to Converter("Farenheit", "Celsius",
-            {F ->  ((F - 32.0)*(5/9))}),
+            {F ->  ((F - 32.0)*(5.0/9.0))}),
         "C to F" to Converter("Celsius","Farenheit",
-            {((9/5)*it + 32.0)}),
+            {((9.0/5.0)*it + 32.0)}),
         "km to mi" to Converter("kilometers", "miles",
             fun (k: Double): Double? {
                 val m = k * 0.6213712
                 return m
             }),
-        "F to K" to Converter("Farenheit", "Kelvin",
-            fun (F: Double): Double? {
-            val k = (((F -32) * (5/9)) + 273.15)
-
-                    return k
-
-        }),
-    "Cars to Cows" to Converter("cars", "cows"),
         "inch to cm" to Converter("inches", "centimeters", ::InToCM))
 

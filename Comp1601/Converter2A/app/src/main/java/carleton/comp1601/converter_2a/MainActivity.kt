@@ -3,7 +3,6 @@ package carleton.comp1601.converter_2a
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -45,41 +44,6 @@ class MainActivity : AppCompatActivity() {
         fromStringW.setVisibility(View.VISIBLE);
         return true
     }
-
-
-    override fun onSaveInstanceState(outState: Bundle) {
-
-        val fromS = fromStringW.getText().toString()
-        var from = fromS.toDoubleOrNull()
-        var text = ""
-
-
-        if (from == null) {
-            text = "Please enter a number to convert."
-        } else {
-            val c = conv
-
-            if (c != null) {
-                text = c.formatConversion(from)
-            } else {
-                text = "No conversion selected."
-            }
-        }
-
-        outState.run {
-
-            putString("convText", text)
-
-        }
-
-        super.onSaveInstanceState(outState)
-
-
-        Log.d("Converter2A", "State saved")
-
-    }
-
-
 
     // https://stackoverflow.com/questions/15580111/
     fun showMenu(v: View) {

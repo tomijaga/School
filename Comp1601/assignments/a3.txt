@@ -1,0 +1,283 @@
+COMP 1601 2021W Tutorial 6
+Name: Tomi Jaga
+Student ID: 101121458
+
+Collaborators:
+
+1.
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        ...
+
+	Log.d("Converter2A", "Created")
+
+	...
+    }
+	
+    fun onMenuItemClick(choice: MenuItem): Boolean {
+        ...
+
+	 Log.d("Converter2A", "ClickedMenuItem")
+
+        ...
+    }
+
+    fun showMenu(v: View) {
+	...
+	Log.d("Converter2A", "DisplayedMenu")
+
+	...
+    }
+
+	
+
+    override fun onDestroy() {
+
+        super.onDestroy()
+
+        Log.d("Converter2A", "Destroyed")
+
+    }
+
+
+    override fun onResume() {
+
+        super.onResume()
+
+        Log.d("Converter2A", "Resumed")
+
+    }
+
+
+    override fun onPause() {
+
+        super.onPause()
+
+        Log.d("Converter2A", "Paused")
+
+    }
+
+
+    override fun onStart() {
+
+        super.onStart()
+
+        Log.d("Converter2A", "Started")
+
+    }
+
+
+    override fun onStop() {
+
+        super.onStop()
+
+        Log.d("Converter2A", "Stopped")
+
+    }
+
+
+    override fun onRestart() {
+
+        super.onRestart()
+
+        Log.d("Converter2A", "Restarted")
+
+    }
+
+}
+
+2 & 3.
+
+val conversions = mapOf(
+        "F to C" to Converter("Farenheit", "Celsius",
+            {F ->  ((F - 32.0)*(5/9))}),
+        "C to F" to Converter("Celsius","Farenheit",
+            {((9/5)*it + 32.0)}),
+        "km to mi" to Converter("kilometers", "miles",
+            fun (k: Double): Double? {
+                val m = k * 0.6213712
+                return m
+            }),
+        "F to K" to Converter("Farenheit", "Kelvin",
+            fun (F: Double): Double? {
+            val k = (((F -32) * (5/9)) + 273.15)
+
+                    return k
+
+        }),
+    "Cars to Cows" to Converter("cars", "cows", {C->(C)}),
+        "inch to cm" to Converter("inches", "centimeters", ::InToCM))
+
+
+
+4. This happens because that EditText is still in the view and the cars to cow does not remove it.
+	What we can do is set the EditText to be invisible when a valid menu item is selected
+
+
+
+5.
+	The layout is messed because the view is destroyed and a new one is created in  horizontal orientation. But the view is not configured for the horizontal orientation so it looks messed up 
+
+6.
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/convMenu"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showMenu"
+            android:text="Conversions Menu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/fromString"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/fromString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/convMenu" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="285dp"
+            android:padding="10dp"
+            android:text="Please select a conversion type from the menu above."
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fromString" />
+
+    </LinearLayout>
+
+7.
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/convMenu"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showMenu"
+        android:text="Conversions Menu"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/fromString"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fromString"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/convMenu" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="406dp"
+        android:layout_height="285dp"
+        android:padding="10dp"
+        android:text="Please select a conversion type from the menu above."
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fromString" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+8. 
+
+
+	private var convText =""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+
+ 	if (savedInstanceState != null) {
+
+            convText= savedInstanceState.getString("convText")
+
+        }
+	...
+
+     }
+	
+   override fun onSaveInstanceState(outState: Bundle) {
+
+        val fromS = fromStringW.getText().toString()
+        var from = fromS.toDoubleOrNull()
+        var text = ""
+        
+        
+        if (from == null) {
+            text = "Please enter a number to convert."
+        } else {
+            val c = conv
+
+            if (c != null) {
+                text = c.formatConversion(from)
+            } else {
+                text = "No conversion selected."
+            }
+        }
+        
+        outState.run {
+
+            putString("convText", text)
+
+        }
+
+        super.onSaveInstanceState(outState)
+
+
+        Log.d("Converter2A", "State saved")
+
+    }
+    
+
